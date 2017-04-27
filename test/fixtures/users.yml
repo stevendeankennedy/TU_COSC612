@@ -2,3 +2,34 @@ stevetest:
     name: Steve Tester
     email: steve@test.com
     password_digest: <%= User.digest('password') %>
+    
+tester:
+    name: Rick Sanchez
+    email: rick@earth.com
+    password_digest: <%= User.digest('password') %>
+    
+tester1:
+    name: Morty Smith
+    email: morty@earth.com
+    password_digest: <%= User.digest('password') %>
+    
+tester2:
+    name: Beth Smith
+    email: beth@aol.com
+    password_digest: <%= User.digest('password') %>
+    
+tester3:
+    name: Jerry Smith
+    email: jerrysmith@aol.com
+    password_digest: <%= User.digest('password') %>
+
+tester4:
+    name: Summer Smith
+    email: summer@earth.com
+    password_digest: <%= User.digest('password') %>
+    
+admintest:
+    name: Admin Adminson
+    email: admin@admin.com
+    password_digest: <%= User.digest('password') %>
+    usertype: 2
