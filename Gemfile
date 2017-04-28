@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.0.2'
 gem 'bcrypt', '~> 3.1.11' # bcrypt for password hashing (from tutorial)
 
+# Test users
+gem 'faker'
 # pagination stuff
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
