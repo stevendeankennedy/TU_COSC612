@@ -1,0 +1,58 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  
+<%= form_for(travel_package) do |f| %>
+  <% if travel_package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(travel_package.errors.count, "error") %> prohibited this travel_package from being saved:</h2>
+
+      <ul>
+      <% travel_package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flight_num %>
+    <%= f.text_field :flight_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flight_depart %>
+    <%= f.text_field :flight_depart %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flight_arrive %>
+    <%= f.text_field :flight_arrive %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary"%>
+  </div>
+<% end %>
+
+</div>
+</div>

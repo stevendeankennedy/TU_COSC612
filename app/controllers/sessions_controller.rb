@@ -13,7 +13,14 @@ class SessionsController < ApplicationController
       else
         forget(user)
       end
-      redirect_back_or user
+      
+      if user.usertype == 1 # Travel Agent
+        redirect_to travel_packages_url
+      elsif user.usertype == 2 # Admin
+        redirect_to users_url
+      else
+        redirect_back_or user
+      end
       
     else # Error
       flash.now[:danger] = 'Invalid email/password combination'
