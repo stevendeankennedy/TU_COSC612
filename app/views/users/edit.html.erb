@@ -18,6 +18,11 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
+      <% if current_user.usertype == 2 %>
+          <%= f.label :usertype, "Create Packages" %>
+          <%= f.check_box :usertype %>
+      <% end %>
+      
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
     

@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!( name: "SteveK",
+User.create!( name: "SteveK Admin",
               email: "admin@a.com",
               password: "towson",
               password_confirmation: "towson",
               usertype: 2)
               
-User.create!( name: "SteveK",
+User.create!( name: "SteveK Agent",
               email: "travel@agent.com",
               password: "towson",
               password_confirmation: "towson",
@@ -23,9 +23,63 @@ User.create!( name: "SteveK",
               password_confirmation: "towson",
               usertype: 0)
               
+User.create!( name: "Francesco",
+              email: "f@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 0)              
+              
+User.create!( name: "Francesco Agent",
+              email: "f_agent@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+              
+User.create!( name: "Francesco Admin",
+              email: "f_admin@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 2)                      
+              
+User.create!( name: "Rachel",
+              email: "r@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 0)              
+              
+User.create!( name: "Rachel Agent",
+              email: "r_agent@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+              
+User.create!( name: "Rachel Admin",
+              email: "r_admin@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 2)      
+              
+User.create!( name: "Deepika",
+              email: "d@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 0)              
+              
+User.create!( name: "Deepika Agent",
+              email: "d_agent@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+              
+User.create!( name: "Deepika Admin",
+              email: "d_admin@towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 2)                
+              
 99.times do |n|
   name = Faker::Name.name
   email = "fake#{n+1}@towson.edu"
-  password = "password"
+  password = "towson"
   User.create!(name: name, email: email, password: password, password_confirmation: password)
 end
