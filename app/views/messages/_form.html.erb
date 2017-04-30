@@ -1,0 +1,46 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+<%= form_for(message) do |f| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The following <%= pluralize(message.errors.count, "error") %> prevented this message from being saved:
+      </div>
+
+      <ul>
+      <% message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <!--<div class="field">-->
+  <!--  <%= f.label :sender %>-->
+  <!--  <%= f.text_field :sender %>-->
+  <!--</div>-->
+
+  <div class="field">
+    <%= f.label :recipient %>
+    <%= f.text_field :recipient %>
+  </div>
+
+  <div class="field">
+    <%= f.label :message %>
+    <%= f.text_area :message, rows: 5 %>
+  </div>
+
+  <!--<div class="field">-->
+  <!--  <%= f.label :user_id %>-->
+  <!--  <%= f.text_field :user_id %>-->
+  <!--</div>-->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div>
+</div>

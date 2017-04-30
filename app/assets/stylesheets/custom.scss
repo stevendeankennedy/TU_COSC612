@@ -78,12 +78,16 @@ p {
     }
 }
 
-ul.nav li a, ul.nav li a:visited {
+ul.nav li a, ul.nav li a:visited{
+    color: #fff;
+}
+
+ul.nav li a, ul.nav li a:unvisited{
     color: #fff;
 }
 
 .navbar-nav > li > .dropdown-menu { 
-    background-color: #aaa; 
+    background-color: #8ec6db; 
     color: #fff;
     a:hover {
         background-color: #ddd;

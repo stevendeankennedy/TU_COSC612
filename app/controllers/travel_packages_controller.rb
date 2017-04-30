@@ -7,7 +7,6 @@ class TravelPackagesController < ApplicationController
   # GET /travel_packages.json
   def index
     @travel_packages = TravelPackage.all
-    p "???"
   end
 
   # GET /travel_packages/1

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :travel_packages
   get 'sessions/new'
 
