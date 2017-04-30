@@ -1,41 +1,44 @@
-<!--<p id="notice"><%= notice %></p>-->
 
-<h1>Messages for <%= @username %></h1>
-<h2>Inbox</h2>
+<% if @messages.count > 0 %>
 
-
-<div class="table-responsive">
-<table class="table table-condensed table-hover ">
-  <thead>
-    <tr>
-      <th>Sender</th>
-      <th>Message</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
+  <h1>Messages for <%= @username %></h1>
+  <h2>Inbox</h2>
+  
+  <div class="table-responsive">
+  <table class="table table-condensed table-hover ">
+    <thead>
       <tr>
-        <% if message.wasread? %>
-          <td><strong><%= message.sender %></strong></td>
-          <td><strong><%= message.message %></strong></td>
-        <% else %>
-          <td><%= message.sender %></td>
-          <td><%= message.message %></td>
-        <% end %>
-        <!--<td><%= link_to 'Show', message %></td>-->
-        <!--<td><%= link_to 'Edit', edit_message_path(message) %></td>-->
-        <td><%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure you want to delete this message?' } %></td>
+        <th>Sender</th>
+        <th>Message</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+    </thead>
+  
+    <tbody>
+      <% @messages.each do |message| %>
+        <tr>
+          <% if message.wasread? %>
+            <td><strong><%= message.sender %></strong></td>
+            <td><strong><%= message.message %></strong></td>
+          <% else %>
+            <td><%= message.sender %></td>
+            <td><%= message.message %></td>
+          <% end %>
+          <!--<td><%= link_to 'Show', message %></td>-->
+          <!--<td><%= link_to 'Edit', edit_message_path(message) %></td>-->
+          <td><%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure you want to delete this message?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+<% else %>
+  <h2>No messages</h2>
+<% end %>
 
 <%= link_to 'New Message', new_message_path, class:"btn btn-lg btn-primary", role:"button"  %>
 
-
+<% if @sent_messages.count > 0 %>
 <h2>Sent Messages</h2>
 
 <div class="table-responsive">
@@ -59,4 +62,4 @@
   </tbody>
 </table>
 </div>
-
+<% end %>

@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
   def index
     # @messages = Message.all
     # @messages = Message.where(user_id: session[:user_id])
+
     @messages = Message.where(recipient: current_user[:email])
     @sent_messages = Message.where(user_id: session[:user_id])
     @username = current_user[:email]
@@ -33,6 +34,10 @@ class MessagesController < ApplicationController
     @message.user_id = session[:user_id] # get user_id
     @message.sender = current_user[:email] # and store it in message
     @message.wasread = false
+    
+    # # this is inefficient way to do this...
+    @other_user = User.find_by(email: @message.recipient.downcase)
+    @message.recipid = @other_user[:id]
     
     if @message.save
       # Handle a successful save

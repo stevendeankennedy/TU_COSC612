@@ -1,8 +1,12 @@
 <h1>Editing Travel Package</h1>
 
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  
+<%= link_to 'Show', @travel_package %> |
+<%= link_to 'Back', travel_packages_path %>
+
+</div></div>
 
 <%= render 'form', travel_package: @travel_package %>
 
-
-<%= link_to 'Show', @travel_package %> |
-<%= link_to 'Back', travel_packages_path %>

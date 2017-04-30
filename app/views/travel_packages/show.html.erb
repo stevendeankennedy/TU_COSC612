@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
+<br>
 
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  
 <p>
   <strong>Name:</strong>
   <%= @travel_package.name %>
@@ -35,10 +38,8 @@
   <%= @travel_package.flight_arrive %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @travel_package.user %>
-</p>
+<%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
+<%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
 
-<%= link_to 'Edit', edit_travel_package_path(@travel_package) %> |
-<%= link_to 'Back', travel_packages_path %>
+</div>
+</div>

@@ -19,4 +19,8 @@ module ApplicationHelper
       @path = root_url
     end
   end
+  
+  def message_count()
+    @msg_count = Message.where(recipient: current_user[:email]).count
+  end
 end
