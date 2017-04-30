@@ -14,7 +14,7 @@ $gray-medium-light: #eaeaea;
 
 body {
     padding-top: 60px;
-    //background-color: #4286f4;
+    // background-color: inherit;
 }
 
 section {
@@ -64,16 +64,31 @@ p {
 #logo {
     float: left;
     margin-right: 10px;
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    padding-top: 9px;
+    font-size: 2em;
+    color: #ffffff;
+    // text-transform: uppercase;
+    // letter-spacing: -1px;
+    padding-top: 10px;
+    padding-bottom: 8px;
     font-weight: bold;
     &:hover {
-        color: #fff;
+        color: #ffffff;
         text-decoration: none;
+        background-color: inherit;
     }
+}
+
+ul.nav li a, ul.nav li a:visited {
+    color: #fff;
+}
+
+.navbar-nav > li > .dropdown-menu { 
+    background-color: #aaa; 
+    color: #fff;
+    a:hover {
+        background-color: #ddd;
+        color: #777;
+    }   
 }
 
 /* footer */
@@ -87,6 +102,7 @@ footer {
         color: $gray;
         &:hover {
             color: $gray-darker;
+            background-color: inherit;
         }
     }
     small {
@@ -104,31 +120,31 @@ footer {
 
 /* sidebar */
 
-aside {
-    section.user_info {
-        margin-top: 20px;
-    }
-    section {
-        padding: 10px 0;
-        margin-top: 20px;
-        &:first-child {
-            border: 0;
-            padding-top: 0;
-        }
-        span {
-            display: block;
-            margin-bottom: 3px;
-            line-height: 1;
-        }
-        h1 {
-            font-size: 1.4em;
-            text-align: left;
-            letter-spacing: -1px;
-            margin-bottom: 3px;
-            margin-top: 0px;
-        }
-    }
-}
+// aside {
+//     section.user_info {
+//         margin-top: 20px;
+//     }
+//     section {
+//         padding: 10px 0;
+//         margin-top: 20px;
+//         &:first-child {
+//             border: 0;
+//             padding-top: 0;
+//         }
+//         span {
+//             display: block;
+//             margin-bottom: 3px;
+//             line-height: 1;
+//         }
+//         h1 {
+//             font-size: 1.4em;
+//             text-align: left;
+//             letter-spacing: -1px;
+//             margin-bottom: 3px;
+//             margin-top: 0px;
+//         }
+//     }
+// }
     
 .gravatar {
     float: left;

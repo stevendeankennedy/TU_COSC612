@@ -1,11 +1,11 @@
 <div class="center jumbotron">
-
     <h1>www.WeLuv2Travel.net</h1>
-    
     <h2>Explore.  Dream.  Discover.</h2>
         
     <p><%= image_tag("Great-Wall-of-China_03.jpg", alt: "Great Wall") %></p>
 
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% if !logged_in? %>
+        <%= link_to "Sign up now!", signup_path, class:"btn btn-lg btn-primary", role:"button" %>
+    <% end %>
     
 </div>

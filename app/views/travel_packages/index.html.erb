@@ -6,6 +6,7 @@
 <table class="table table-condensed table-hover ">
   <thead>
     <tr>
+      <th> - </th>
       <th>Name</th>
       <th>Price</th>
       <th>Destination</th>
@@ -23,7 +24,7 @@
           <%= link_to 'Delete', travel_package, method: :delete, data: 
           { confirm: 'Are you sure you want to delete this package?' } %></td>
         <td><%= link_to travel_package.name, travel_package %></td>
-        <td><%= travel_package.price %></td>
+        <td>$<%= travel_package.price %></td>
         <td><%= travel_package.location %></td>
         <td><%= travel_package.flight_num %></td>
         <td><%= travel_package.flight_depart %></td>
