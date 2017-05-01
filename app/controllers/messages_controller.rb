@@ -21,6 +21,9 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    if params[:recipient]
+      @message.recipient = params[:recipient]
+    end
   end
 
   # GET /messages/1/edit
@@ -34,10 +37,9 @@ class MessagesController < ApplicationController
     @message.user_id = session[:user_id] # get user_id
     @message.sender = current_user[:email] # and store it in message
     @message.wasread = false
-    
-    # # this is inefficient way to do this...
-    @other_user = User.find_by(email: @message.recipient.downcase)
-    @message.recipid = @other_user[:id]
+
+    # for letting the user know my id
+    @message.recipid = current_user[:id]
     
     if @message.save
       # Handle a successful save
