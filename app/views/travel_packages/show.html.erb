@@ -3,6 +3,8 @@
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
   
+<p><%= image_tag("travel_airplane.jpg", class: "steve-responsive", alt: "Great Wall") %></p>
+
 <p>
   <strong>Name:</strong>
   <%= @travel_package.name %>
@@ -38,8 +40,17 @@
   <%= @travel_package.flight_arrive %>
 </p>
 
-<%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
-<%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
+<p>
+  <strong>Offered by:</strong>
+  <%= @agent.name %>
+</p>
+
+<% if current_user.usertype != 0 %>
+  <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
+  <%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
+<% else %>
+  <%= link_to "Contact this Travel Agent", user_path(@travel_package.user_id), class:"btn btn-lg btn-primary", role:"button" %>
+<% end %>
 
 </div>
 </div>

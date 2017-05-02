@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :travel_packages
+
   get 'sessions/new'
 
   get 'users/new'
@@ -18,7 +17,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
+  # Search
+  get '/search', to: 'travel_packages#search'
+  get '/searchresults', to: 'travel_packages#searchresults'
+  
   resources :users
-
+  resources :messages
+  resources :travel_packages
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

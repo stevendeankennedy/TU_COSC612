@@ -1,38 +1,67 @@
-<!--<p id="notice"><%= notice %></p>-->
-
-<h1>Travel Packages</h1>
-
-<div class="table-responsive">
-<table class="table table-condensed table-hover ">
-  <thead>
-    <tr>
-      <th> - </th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Destination</th>
-      <th>Flight number </th>
-      <th>Flight departure</th>
-      <th>Flight arrival</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @travel_packages.each do |travel_package| %>
+<% if current_user.usertype == 2 %>
+  <h1>All Travel Packages</h1>
+  
+  <div class="table-responsive">
+  <table class="table table-condensed table-hover ">
+    <thead>
       <tr>
-        <td><%= link_to 'Edit', edit_travel_package_path(travel_package) %> / 
-          <%= link_to 'Delete', travel_package, method: :delete, data: 
-          { confirm: 'Are you sure you want to delete this package?' } %></td>
-        <td><%= link_to travel_package.name, travel_package %></td>
-        <td>$<%= travel_package.price %></td>
-        <td><%= travel_package.location %></td>
-        <td><%= travel_package.flight_num %></td>
-        <td><%= travel_package.flight_depart %></td>
-        <td><%= travel_package.flight_arrive %></td>
+        <th> - </th>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Tags</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-
-<%= link_to 'New Travel Package', new_travel_package_path, class: "btn btn-lg btn-primary", role: "button" %>
+    </thead>
+  
+    <tbody>
+      <% @travel_packages.each do |travel_package| %>
+        <tr>
+          <td><%= link_to 'Edit', edit_travel_package_path(travel_package) %> / 
+            <%= link_to 'Delete', travel_package, method: :delete, data: 
+            { confirm: 'Are you sure you want to delete this package?' } %></td>
+          <td><%= link_to travel_package.name, travel_package %></td>
+          <td><%= travel_package.location %></td>
+          <td><%= travel_package.tags %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  
+<% else %>
+  <h1>Travel Packages</h1>
+  
+  <div class="table-responsive">
+  <table class="table table-condensed table-hover ">
+    <thead>
+      <tr>
+        <th> - </th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Destination</th>
+        <th>Flight number </th>
+        <th>Flight departure</th>
+        <th>Flight arrival</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @travel_packages.each do |travel_package| %>
+        <tr>
+          <td><%= link_to 'Edit', edit_travel_package_path(travel_package) %> / 
+            <%= link_to 'Delete', travel_package, method: :delete, data: 
+            { confirm: 'Are you sure you want to delete this package?' } %></td>
+          <td><%= link_to travel_package.name, travel_package %></td>
+            <td><%= number_to_currency(travel_package.price, precision: 0) %></td>
+          <td><%= travel_package.location %></td>
+          <td><%= travel_package.flight_num %></td>
+          <td><%= travel_package.flight_depart %></td>
+          <td><%= travel_package.flight_arrive %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  
+  <%= link_to 'New Travel Package', new_travel_package_path, class: "btn btn-lg btn-primary", role: "button" %>
+<% end %>

@@ -5,6 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create!( name: "Steve Travel Agent",
+              email: "skenne28@students.towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+
+User.create!( name: "Francesco Travel Agent",
+              email: "fbutts1@students.towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+              
+User.create!( name: "Rachel Travel Agent",
+              email: "rosias1@students.towson.edu",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+              
+User.create!( name: "Deepika Travel Agent",
+              email: "gorre.deepika@gmail.com",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 1)
+              
 User.create!( name: "SteveK Admin",
               email: "admin@a.com",
               password: "towson",
@@ -16,6 +40,8 @@ User.create!( name: "SteveK Agent",
               password: "towson",
               password_confirmation: "towson",
               usertype: 1)
+              
+
               
 User.create!( name: "SteveK",
               email: "a@b.com",
@@ -75,9 +101,15 @@ User.create!( name: "Deepika Admin",
               email: "d_admin@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 2)                
+              usertype: 2)       
               
-99.times do |n|
+User.create!( name: "Clint",
+              email: "umdmariachi@gmail.com",
+              password: "towson",
+              password_confirmation: "towson",
+              usertype: 0)   
+              
+25.times do |n|
   name = Faker::Name.name
   email = "fake#{n+1}@towson.edu"
   password = "towson"

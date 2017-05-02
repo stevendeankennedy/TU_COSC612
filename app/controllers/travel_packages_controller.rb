@@ -6,12 +6,17 @@ class TravelPackagesController < ApplicationController
   # GET /travel_packages
   # GET /travel_packages.json
   def index
-    @travel_packages = TravelPackage.all
+    if current_user.usertype == 2
+      @travel_packages = TravelPackage.all
+    else
+      @travel_packages = TravelPackage.allForID(session[:user_id])
+    end
   end
 
   # GET /travel_packages/1
   # GET /travel_packages/1.json
   def show
+    @agent = User.find(@travel_package.user_id)
   end
 
   # GET /travel_packages/new
@@ -44,25 +49,29 @@ class TravelPackagesController < ApplicationController
   # PATCH/PUT /travel_packages/1
   # PATCH/PUT /travel_packages/1.json
   def update
-    respond_to do |format|
-      if @travel_package.update(travel_package_params)
-        format.html { redirect_to @travel_package, notice: 'Travel package was successfully updated.' }
-        format.json { render :show, status: :ok, location: @travel_package }
-      else
-        format.html { render :edit }
-        format.json { render json: @travel_package.errors, status: :unprocessable_entity }
-      end
+    if @travel_package.update(travel_package_params)
+      # Successful update
+      flash[:success] = "Updated successfully."
+      redirect_to @travel_package
+    else # not successful :(
+      render :edit
     end
   end
+
 
   # DELETE /travel_packages/1
   # DELETE /travel_packages/1.json
   def destroy
     @travel_package.destroy
-    respond_to do |format|
-      format.html { redirect_to travel_packages_url, notice: 'Travel package was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Package successfully deleted."
+  end
+
+  def search
+    
+  end
+  
+  def searchresults
+    @travel_packages = TravelPackage.search(params[:search])
   end
 
   private
@@ -73,7 +82,7 @@ class TravelPackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_package_params
-      params.require(:travel_package).permit(:name, :price, :location, :description, :flight_num, :flight_depart, :flight_arrive)
+      params.require(:travel_package).permit(:name, :price, :location, :description, :flight_num, :flight_depart, :flight_arrive, :tags)
     end
     
     # before filters ------------------------
@@ -88,7 +97,7 @@ class TravelPackagesController < ApplicationController
     
     # confirm correct user
     def correct_user
-      if !logged_in? || current_user.usertype != 1
+      if !logged_in? || current_user.usertype < 1
         flash[:warning] = "You cannot access this page"
         redirect_to root_url
       end

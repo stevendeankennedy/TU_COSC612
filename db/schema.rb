@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430212936) do
+ActiveRecord::Schema.define(version: 20170502152148) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "sender"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170430212936) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "tags"
     t.index ["user_id"], name: "index_travel_packages_on_user_id"
   end
 

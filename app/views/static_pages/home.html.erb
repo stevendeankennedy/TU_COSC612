@@ -2,10 +2,9 @@
     <h1>www.WeLuv2Travel.net</h1>
     <h2>Explore.  Dream.  Discover.</h2>
         
-    <p><%= image_tag("Great-Wall-of-China_03.jpg", alt: "Great Wall") %></p>
-
+    <p><%= image_tag("travel_airplane.jpg", class: "steve-responsive", alt: "Travel") %></p>
+    
     <% if !logged_in? %>
         <%= link_to "Sign up now!", signup_path, class:"btn btn-lg btn-primary", role:"button" %>
     <% end %>
-    
 </div>
