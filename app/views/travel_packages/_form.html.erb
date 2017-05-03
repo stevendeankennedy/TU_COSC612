@@ -35,20 +35,31 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= f.label :flight_num %>
-    <%= f.text_field :flight_num %>
-  </div>
-
-  <div class="field">
-    <%= f.label :flight_depart %>
-    <%= f.text_field :flight_depart %>
-  </div>
-
-  <div class="field">
-    <%= f.label :flight_arrive %>
-    <%= f.text_field :flight_arrive %>
-  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td><%= f.label :flight_num %>
+        <%= f.text_field :flight_num %></td>
+        <td><%= f.label :flight_depart %>
+        <%= f.text_field :flight_depart %></td>
+        <td><%= f.label :flight_arrive %>
+      <%= f.text_field :flight_arrive %></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table>
+    <tbody>
+      <tr>
+        <td><%= f.label :return_num %>
+        <%= f.text_field :return_num %></td>
+        <td><%= f.label :return_depart %>
+        <%= f.text_field :return_depart %></td>
+        <td><%= f.label :return_arrive %>
+      <%= f.text_field :return_arrive %></td>
+      </tr>
+    </tbody>
+  </table>
   
   <div class="field">
     <%= f.label :tags %>

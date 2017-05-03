@@ -82,7 +82,10 @@ class TravelPackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_package_params
-      params.require(:travel_package).permit(:name, :price, :location, :description, :flight_num, :flight_depart, :flight_arrive, :tags)
+      params.require(:travel_package).permit(:name, :price, :location, :description, 
+                    :flight_num, :flight_depart, :flight_arrive, :tags,
+                    :return_num, :return_depart, :return_arrive
+                    )
     end
     
     # before filters ------------------------
