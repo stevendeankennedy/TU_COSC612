@@ -35,14 +35,12 @@ class TravelPackagesController < ApplicationController
     myID = session[:user_id]
     @travel_package.user_id = myID
 
-    respond_to do |format|
-      if @travel_package.save
-        format.html { redirect_to @travel_package, notice: 'Travel package was successfully created.' }
-        format.json { render :show, status: :created, location: @travel_package }
-      else
-        format.html { render :new }
-        format.json { render json: @travel_package.errors, status: :unprocessable_entity }
-      end
+
+    if @travel_package.save
+      flash[:success] = 'Travel package was successfully created.'
+      redirect_to travel_packages_url(@travel_package)
+    else
+      render 'new'
     end
   end
 
@@ -72,6 +70,12 @@ class TravelPackagesController < ApplicationController
   
   def searchresults
     @travel_packages = TravelPackage.search(params[:search])
+  end
+
+  def confirmation
+    # This would need a more complex system, but since we have no actual purchase system
+    #   it occurs here as a simple passthrough
+    p "Purchase package"
   end
 
   private

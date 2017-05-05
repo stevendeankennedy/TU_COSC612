@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  user_id: one
+  user_id: one
+  travel_package_id: one
+
+two:
+  amount: 1
+  user_id: two
+  user_id: two
+  travel_package_id: two

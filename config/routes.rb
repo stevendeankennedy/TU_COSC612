@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get '/search', to: 'travel_packages#search'
   get '/searchresults', to: 'travel_packages#searchresults'
   
+  # Purchasing
+  get '/confirmation', to: 'travel_packages#confirmation'
+  
   resources :users
   resources :messages
   resources :travel_packages

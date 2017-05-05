@@ -41,6 +41,16 @@
 </p>
 
 <p>
+  <strong>Return Flight:</strong> <%= @travel_package.return_num %>
+</p>
+<p>
+  <strong>Return Departure:</strong> <%= @travel_package.return_depart %>
+</p>
+<p>
+  <strong>Return Arrival:</strong> <%= @travel_package.return_arrive %>
+</p>
+
+<p>
   <strong>Offered by:</strong>
   <%= @agent.name %>
 </p>
@@ -49,7 +59,12 @@
   <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
   <%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
 <% else %>
+  <div class="col-lg-6">
   <%= link_to "Contact this Travel Agent", user_path(@travel_package.user_id), class:"btn btn-lg btn-primary", role:"button" %>
+  </div>
+  <div class="col-lg-6">
+  <%= link_to "Buy this package", confirmation_url, class:"btn btn-lg btn-primary", role:"button" %>
+  </div>
 <% end %>
 
 </div>

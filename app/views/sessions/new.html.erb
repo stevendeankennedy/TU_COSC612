@@ -16,9 +16,13 @@
                 <span>Remember me</span>
             <% end %>
             
+            <div class="col-lg-6">
             <%= f.submit "Log in", class: "btn btn-primary" %>
+            </div>
         <% end %>
         
-        <p>Are you a new user? <%= link_to "Sign up by clicking here!", signup_path %></p>
+        <div class="col-lg-6">
+        <p>Are you a new user? <%= link_to "Sign up!", signup_path %></p>
+        </div>
     </div>
 </div>
