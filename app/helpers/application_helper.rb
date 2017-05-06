@@ -25,6 +25,6 @@ module ApplicationHelper
   end
   
   def get_friends()
-    @friends = Friend.all
+    @friends = Friend.find_friends(current_user.id)
   end
 end
