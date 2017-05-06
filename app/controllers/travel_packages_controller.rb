@@ -7,7 +7,7 @@ class TravelPackagesController < ApplicationController
   # GET /travel_packages.json
   def index
     if current_user.usertype == 2
-      @travel_packages = TravelPackage.all
+      @travel_packages = TravelPackage.where(active: true)
     else
       @travel_packages = TravelPackage.allForID(session[:user_id])
     end
@@ -34,7 +34,7 @@ class TravelPackagesController < ApplicationController
     @travel_package = TravelPackage.new(travel_package_params)
     myID = session[:user_id]
     @travel_package.user_id = myID
-
+    @travel_package.active = true
 
     if @travel_package.save
       flash[:success] = 'Travel package was successfully created.'
@@ -59,9 +59,17 @@ class TravelPackagesController < ApplicationController
 
   # DELETE /travel_packages/1
   # DELETE /travel_packages/1.json
+  # doesn't actually destroy the object, since the data is used for historical records
   def destroy
-    @travel_package.destroy
-    flash[:success] = "Package successfully deleted."
+    # @travel_package.destroy
+    # flash[:success] = "Package successfully deleted."
+    @travel_package.active = false
+    if @travel_package.save
+      flash[:success] = 'Travel package was successfully deleted.'
+    else
+      flash[:danger] = 'Unable to delete.'
+    end
+    redirect_to travel_packages_url
   end
 
   def search

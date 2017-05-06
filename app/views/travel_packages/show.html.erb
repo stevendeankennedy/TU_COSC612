@@ -65,16 +65,22 @@
   <%= @agent.name %>
 </p>
 
-<% if current_user.usertype != 0 %>
+<% if current_user.usertype != 0  && @travel_package.active%>
   <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
   <%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
 <% else %>
   <div class="col-lg-6">
   <%= link_to "Contact this Travel Agent", user_path(@travel_package.user_id), class:"btn btn-lg btn-primary", role:"button" %>
   </div>
-  <div class="col-lg-6">
-  <%= link_to "Buy this package", confirmation_url(:do => :confirm, :pack => @travel_package), class:"btn btn-lg btn-primary", role:"button" %>
-  </div>
+  <% if @travel_package.active %>
+    <div class="col-lg-6">
+    <%= link_to "Buy this package", confirmation_url(:do => :confirm, :pack => @travel_package), class:"btn btn-lg btn-primary", role:"button" %>
+    </div>
+  <% else %>
+    <div class="col-lg-6">
+      This package is not for sale.
+    </div>
+  <% end %>
 <% end %>
 
 </div>

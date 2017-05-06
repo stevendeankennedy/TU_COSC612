@@ -21,8 +21,9 @@
       <%= link_to 'Follow', follow_path(:friend => @user.id), class:"btn btn-lg" %>
     <% end %>
 
+  <% if @user.usertype == 1 %>
     <%= link_to "See all my packages", agentpackages_path(:agent => @user.id), class:"btn btn-lg" %>
-
+  <% end %>
 </div>
 <% end %>
 
