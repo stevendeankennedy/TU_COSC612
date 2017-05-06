@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user && user.active? && user.authenticate(params[:session][:password])
       # Log the user in and redirect to the landing page
       log_in user
       # remember them if they request

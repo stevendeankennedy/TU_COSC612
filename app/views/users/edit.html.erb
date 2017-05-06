@@ -21,7 +21,13 @@
       <% if current_user.usertype == 2 %>
           <%= f.label :usertype, "Create Packages" %>
           <%= f.check_box :usertype %>
+          
+          <%= f.label :active, "Active" %>
+          <%= f.check_box :active %>
       <% end %>
+      
+      <%= f.label :private %>
+      <%= f.check_box :private %>
       
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>

@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   
   def index
     #@users = User.all # All users
-    @users = User.paginate(page: params[:page], per_page: 20) # get paginated users
+    if (current_user.usertype == 2)
+      @users = User.where('usertype != ?', 2)
+    else
+      @users = User.where('active = ? and private = ? and usertype != ?', true, false, 2) # get users
+      # @users = User.all
+    end
     @heading = "All users"
   end
 
@@ -77,17 +82,26 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
+  # Doesn't actually destroy, just make inactive  
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    # User.find(params[:id]).destroy
+    # flash[:success] = "User deleted"
+    # redirect_to users_url
+    @user = User.find(params[:id])
+    @user.active = false
+    if (@user.save)
+      flash[:success] = 'User successfully deactivated.'
+    else
+      flash[:danger] = 'Something went wrong.  Unable to delete.'
+    end
     redirect_to users_url
   end
   
   private # --------------------------------------------------------------------
   
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :usertype)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :usertype, :active, :private)
     end
     
     # before filters
