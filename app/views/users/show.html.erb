@@ -10,6 +10,33 @@
     <!--</aside>-->
 </div>
 <br>
+
+<% if current_user != @user %>
 <div class="row center">
     <%= link_to "Send Message", new_message_path(:recipient => @user.email), class:"btn btn-lg btn-primary", role:"button" %>
 </div>
+<% end %>
+
+<% if @purchases.count > 0 %>
+    <h1>Travel History</h1>
+    
+    <div class="table-responsive">
+    <table class="table table-condensed table-hover ">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @purchases.each do |p| %>
+        <tr>
+          <td><%= link_to p.name, travel_package_url(p.package_id) %></td>
+          <td><%= p.location %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    </div>
+<% end %>

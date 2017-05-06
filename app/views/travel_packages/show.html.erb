@@ -63,7 +63,7 @@
   <%= link_to "Contact this Travel Agent", user_path(@travel_package.user_id), class:"btn btn-lg btn-primary", role:"button" %>
   </div>
   <div class="col-lg-6">
-  <%= link_to "Buy this package", confirmation_url, class:"btn btn-lg btn-primary", role:"button" %>
+  <%= link_to "Buy this package", confirmation_url(:do => :confirm, :pack => @travel_package), class:"btn btn-lg btn-primary", role:"button" %>
   </div>
 <% end %>
 

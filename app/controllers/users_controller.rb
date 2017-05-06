@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @purchases = PurchaseHistory.where("traveller_id = ?", @user)
   end
   
   def new

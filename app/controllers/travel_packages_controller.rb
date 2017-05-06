@@ -75,7 +75,21 @@ class TravelPackagesController < ApplicationController
   def confirmation
     # This would need a more complex system, but since we have no actual purchase system
     #   it occurs here as a simple passthrough
-    p "Purchase package"
+    @travel_package = TravelPackage.find(params[:pack])
+    @purch = PurchaseHistory.new({amount: @travel_package.price, 
+                                  traveller_id: current_user.id, 
+                                  agent_id: @travel_package.user_id, 
+                                  package_id: @travel_package.id,
+                                  location: @travel_package.location,
+                                  name: @travel_package.name
+    })
+    if @purch.save
+      @destination = @travel_package.location
+      @confirmation = @purch.id
+    else
+      flash[:danger] = "Sorry, that didn't save..."
+      redirect_to root_url
+    end
   end
 
   private

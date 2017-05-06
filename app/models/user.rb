@@ -5,6 +5,7 @@ class User < ApplicationRecord
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     has_many :travel_packages
     has_many :messages
+    has_many :puchase_histories
     
     validates(
         :email, presence: true, length: {maximum: 255},

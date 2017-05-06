@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502234644) do
+ActiveRecord::Schema.define(version: 20170505142942) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "sender"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170502234644) do
     t.boolean  "wasread"
     t.integer  "recipid"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "purchase_histories", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "traveller_id"
+    t.integer  "agent_id"
+    t.integer  "package_id"
+    t.string   "name"
+    t.string   "location"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "travel_packages", force: :cascade do |t|
