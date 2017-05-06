@@ -68,8 +68,17 @@ class TravelPackagesController < ApplicationController
     
   end
   
+  # Searches on multiply keywords
   def searchresults
-    @travel_packages = TravelPackage.search(params[:search])
+    # @travel_packages = TravelPackage.search(params[:search])
+    
+    @keys = params[:search].split
+    @travel_packages = TravelPackage.search(@keys.shift)
+    
+    @keys.each do |k|
+      @r = TravelPackage.search(k)
+      @travel_packages = @travel_packages.or(@r)
+    end
   end
   
   def searchbyagent
@@ -108,7 +117,8 @@ class TravelPackagesController < ApplicationController
     def travel_package_params
       params.require(:travel_package).permit(:name, :price, :location, :description, 
                     :flight_num, :flight_depart, :flight_arrive, :tags,
-                    :return_num, :return_depart, :return_arrive
+                    :return_num, :return_depart, :return_arrive,
+                    :airport, :returnairport
                     )
     end
     

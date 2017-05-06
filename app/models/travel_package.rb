@@ -8,7 +8,7 @@ class TravelPackage < ApplicationRecord
       skLIKE = "LIKE"
     end
     q = "%#{tag}%"
-    where("tags #{skLIKE} ? or name #{skLIKE} ? or location #{skLIKE} ?", q, q, q)
+    where("tags #{skLIKE} ? or name #{skLIKE} ? or location #{skLIKE} ? or airport #{skLIKE} ?", q, q, q, q)
   end
   
   def TravelPackage.allForID(theID)

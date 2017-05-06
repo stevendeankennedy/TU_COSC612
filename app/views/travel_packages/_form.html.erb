@@ -38,6 +38,8 @@
   <table>
     <tbody>
       <tr>
+        <td><%= f.label "Leaves from" %>
+        <%= f.text_field :airport %></td>
         <td><%= f.label :flight_num %>
         <%= f.text_field :flight_num %></td>
         <td><%= f.label :flight_depart %>
@@ -51,6 +53,8 @@
   <table>
     <tbody>
       <tr>
+        <td><%= f.label "Returns From" %>
+        <%= f.text_field :returnairport %></td>
         <td><%= f.label :return_num %>
         <%= f.text_field :return_num %></td>
         <td><%= f.label :return_depart %>

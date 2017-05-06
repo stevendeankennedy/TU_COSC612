@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506162025) do
+ActiveRecord::Schema.define(version: 20170506202542) do
 
   create_table "friends", force: :cascade do |t|
     t.boolean  "confirmed"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170506162025) do
     t.string   "return_num"
     t.string   "return_depart"
     t.string   "return_arrive"
+    t.string   "airport"
+    t.string   "returnairport"
     t.index ["user_id"], name: "index_travel_packages_on_user_id"
   end
 

@@ -8,6 +8,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Destination</th>
+        <th>Airport</th>
         <th>Flight number </th>
         <th>Flight departure</th>
         <th>Flight arrival</th>
@@ -22,6 +23,7 @@
           <!--<td><%= travel_package.price %></td>-->
           <td><%= number_to_currency(travel_package.price, precision: 0) %></td>
           <td><%= travel_package.location %></td>
+          <td><%= travel_package.airport %></td>
           <td><%= travel_package.flight_num %></td>
           <td><%= travel_package.flight_depart %></td>
           <td><%= travel_package.flight_arrive %></td>
