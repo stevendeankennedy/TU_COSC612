@@ -9,37 +9,49 @@ User.create!( name: "Steve Travel Agent",
               email: "skenne28@students.towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
 
 User.create!( name: "Francesco Travel Agent",
               email: "fbutts1@students.towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 User.create!( name: "Rachel Travel Agent",
               email: "rosias1@students.towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 User.create!( name: "Deepika Travel Agent",
               email: "gorre.deepika@gmail.com",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 User.create!( name: "SteveK Admin",
               email: "admin@a.com",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 2)
+              usertype: 2,
+              active: true,
+              private: false)
               
 User.create!( name: "SteveK Agent",
               email: "travel@agent.com",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 
               
@@ -47,67 +59,89 @@ User.create!( name: "SteveK",
               email: "a@b.com",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 0)
+              usertype: 0,
+              active: true,
+              private: false)
               
 User.create!( name: "Francesco",
               email: "f@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 0)              
+              usertype: 0,
+              active: true,
+              private: false)              
               
 User.create!( name: "Francesco Agent",
               email: "f_agent@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 User.create!( name: "Francesco Admin",
               email: "f_admin@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 2)                      
+              usertype: 2,
+              active: true,
+              private: false)                      
               
 User.create!( name: "Rachel",
               email: "r@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 0)              
+              usertype: 0,
+              active: true,
+              private: false)              
               
 User.create!( name: "Rachel Agent",
               email: "r_agent@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 User.create!( name: "Rachel Admin",
               email: "r_admin@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 2)      
+              usertype: 2,
+              active: true,
+              private: false)      
               
 User.create!( name: "Deepika",
               email: "d@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 0)              
+              usertype: 0,
+              active: true,
+              private: false)              
               
 User.create!( name: "Deepika Agent",
               email: "d_agent@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 1)
+              usertype: 1,
+              active: true,
+              private: false)
               
 User.create!( name: "Deepika Admin",
               email: "d_admin@towson.edu",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 2)       
+              usertype: 2,
+              active: true,
+              private: false)       
               
 User.create!( name: "Clint",
               email: "umdmariachi@gmail.com",
               password: "towson",
               password_confirmation: "towson",
-              usertype: 0)   
+              usertype: 0,
+              active: true,
+              private: false)   
               
 TravelPackage.create!( 
   name: "Mountain Biking",
@@ -117,7 +151,7 @@ TravelPackage.create!(
   flight_num: "Lambda 300",
   flight_depart: "June 1 at 10:00am",
   flight_arrive: "June 1 at 5:00pm",
-  user_id: 9,
+  user_id: 2,
   tags: "mountain biking bike outdoors exciting",
   return_num: "Lambda 210",
   return_depart: "June 7 at 4:00pm",
@@ -128,5 +162,8 @@ TravelPackage.create!(
   name = Faker::Name.name
   email = "fake#{n+1}@towson.edu"
   password = "towson"
-  User.create!(name: name, email: email, password: password, password_confirmation: password)
+  User.create!(name: name, email: email, 
+    password: password, password_confirmation: password,
+    active: true, private: false
+  )
 end
