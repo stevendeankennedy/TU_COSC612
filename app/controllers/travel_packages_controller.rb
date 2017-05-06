@@ -71,6 +71,12 @@ class TravelPackagesController < ApplicationController
   def searchresults
     @travel_packages = TravelPackage.search(params[:search])
   end
+  
+  def searchbyagent
+    @travel_packages = TravelPackage.allForID(params[:agent])
+    
+    render :searchresults
+  end
 
   def confirmation
     # This would need a more complex system, but since we have no actual purchase system

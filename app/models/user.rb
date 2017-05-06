@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :travel_packages
     has_many :messages
     has_many :puchase_histories
+    has_many :friends
     
     validates(
         :email, presence: true, length: {maximum: 255},

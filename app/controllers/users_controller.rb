@@ -6,11 +6,18 @@ class UsersController < ApplicationController
   def index
     #@users = User.all # All users
     @users = User.paginate(page: params[:page], per_page: 20) # get paginated users
+    @heading = "All users"
   end
-  
+
+  # show the user, will generate the appropriate buttons
   def show
     @user = User.find(params[:id])
     @purchases = PurchaseHistory.where("traveller_id = ?", @user)
+    @friend = Friend.where("user = ? and friend = ?", current_user.id, @user.id).count
+    @is_friend = false
+    if @friend > 0
+      @is_friend = true
+    end
   end
   
   def new
@@ -27,6 +34,35 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  # Add a friend here.
+  def addfriend
+    @user = User.find(params[:friend])
+    @friend_item = Friend.new( {
+      confirmed: false,
+      user: current_user.id,
+      friend: @user.id,
+      friend_name: @user.name,
+      friend_email: @user.email
+    })
+  
+    if @friend_item.save
+      flash[:success] = "Following."
+      redirect_to user_url(params[:friend])
+    else
+      flash[:danger] = "Sorry, that didn't save..."
+      redirect_to root_url
+    end
+  end
+  
+  # Remove that friend
+  def removefriend
+    @friend_item = Friend.find_friends(current_user.id, params[:friend]).first
+    
+    @friend_item.destroy
+    flash[:success] = "Unfollowed this user."
+    redirect_to user_url(params[:friend])
   end
   
   def edit

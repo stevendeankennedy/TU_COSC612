@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/1
   # GET /messages/1.json
+  # Show the user.  Will add a follow link if following.  An unfollow link otherwise
   def show
   end
 

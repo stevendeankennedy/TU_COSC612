@@ -109,6 +109,21 @@ User.create!( name: "Clint",
               password_confirmation: "towson",
               usertype: 0)   
               
+TravelPackage.create!( 
+  name: "Mountain Biking",
+  price: 500,
+  location: "Penn Hills",
+  description: "bike to slsdksldkfsjldkf sldkfjs ldkfjs dlfkjs lfdkj fsdlkj",
+  flight_num: "Lambda 300",
+  flight_depart: "June 1 at 10:00am",
+  flight_arrive: "June 1 at 5:00pm",
+  user_id: 9,
+  tags: "mountain biking bike outdoors exciting",
+  return_num: "Lambda 210",
+  return_depart: "June 7 at 4:00pm",
+  return_arrive: "June 7 at 11:11pm"
+)
+              
 15.times do |n|
   name = Faker::Name.name
   email = "fake#{n+1}@towson.edu"

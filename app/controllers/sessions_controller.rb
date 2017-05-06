@@ -19,7 +19,14 @@ class SessionsController < ApplicationController
       elsif user.usertype == 2 # Admin
         redirect_to users_url
       else
-        redirect_back_or user
+        msgs = Message.where(recipient: user[:email]).count
+
+        if (msgs > 0)
+          flash[:info] = "You have messages!"
+          redirect_to messages_url
+        else
+          redirect_back_or user
+        end
       end
       
     else # Error

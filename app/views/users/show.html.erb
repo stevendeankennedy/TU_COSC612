@@ -13,7 +13,16 @@
 
 <% if current_user != @user %>
 <div class="row center">
-    <%= link_to "Send Message", new_message_path(:recipient => @user.email), class:"btn btn-lg btn-primary", role:"button" %>
+    <%= link_to "Send Message", new_message_path(:recipient => @user.email), class:"btn btn-lg", role:"button" %>
+    
+    <% if @is_friend %>
+      <%= link_to 'Unfollow', unfollow_path(:friend => @user.id), class:"btn btn-lg" %>
+    <% else %>
+      <%= link_to 'Follow', follow_path(:friend => @user.id), class:"btn btn-lg" %>
+    <% end %>
+
+    <%= link_to "See all my packages", agentpackages_path(:agent => @user.id), class:"btn btn-lg" %>
+
 </div>
 <% end %>
 

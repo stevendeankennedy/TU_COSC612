@@ -23,6 +23,12 @@ Rails.application.routes.draw do
   
   # Purchasing
   get '/confirmation', to: 'travel_packages#confirmation'
+  get '/agentpackages', to: 'travel_packages#searchbyagent'
+  
+  # Friends
+  get '/follow', to: 'users#addfriend'
+  get '/unfollow', to: 'users#removefriend'
+  get '/following', to: 'friends#index'
   
   resources :users
   resources :messages

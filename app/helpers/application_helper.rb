@@ -23,4 +23,8 @@ module ApplicationHelper
   def message_count()
     @msg_count = Message.where(recipient: current_user[:email]).count
   end
+  
+  def get_friends()
+    @friends = Friend.all
+  end
 end

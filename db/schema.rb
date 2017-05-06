@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505142942) do
+ActiveRecord::Schema.define(version: 20170506162025) do
+
+  create_table "friends", force: :cascade do |t|
+    t.boolean  "confirmed"
+    t.integer  "user"
+    t.integer  "friend"
+    t.string   "friend_name"
+    t.string   "friend_email"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string   "sender"

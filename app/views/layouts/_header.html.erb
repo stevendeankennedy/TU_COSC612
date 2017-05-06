@@ -12,6 +12,16 @@
               <% end %>
               <li><%= link_to "Inbox (#{message_count})", messages_path %></li>
               <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Following<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <% get_friends.each do |u| %>
+                      <li>
+                        <%= link_to u.friend_name, user_path(u.friend) %>
+                      </li>
+                      <% end %>
+                </ul>
+              </li>               
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
