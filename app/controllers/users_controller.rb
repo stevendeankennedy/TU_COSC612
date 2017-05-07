@@ -31,6 +31,8 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    @user.active = true
+    @user.private = false
     if @user.save
       # Handle a successful save
       log_in @user

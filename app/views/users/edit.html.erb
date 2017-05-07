@@ -73,11 +73,22 @@
 										
 										
 										
+										
 										<div class="col-md-6">
 										<div class="form-group">
 										<%= f.submit "Save changes", class: "btn btn-primary" %>
 										</div>
 										</div>
+										
+										<div class="col-md-6">
+										<div class="form-group">
+										<table><tbody><tr>
+							      	<td><%= f.label :private %></td>
+							      	<td>&nbsp;</td>
+    									<td><%= f.check_box :private %></td>
+    								</tr></tbody></table>
+    								</div>
+    								</div>
                 <% end %>
 							</div>
 						</div>
