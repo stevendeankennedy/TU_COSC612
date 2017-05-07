@@ -18,6 +18,10 @@
 <div id="fh5co-main">
 
 		<div class="container">
+			<div class="col-md-12">
+      <%= render 'shared/flash_messages' if !flash.empty? %>
+      </div>
+		  
 			<div class="row">
         <% if current_user.usertype == 2 %>
           <h1>All Travel Packages</h1>
