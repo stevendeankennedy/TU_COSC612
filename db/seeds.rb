@@ -38,7 +38,7 @@ User.create!( name: "Deepika Travel Agent",
               private: false)
               
 User.create!( name: "Doug E. Doug",
-              email: "admin@a.com",
+              email: "megadem@gmail.com",
               password: "password",
               password_confirmation: "password",
               usertype: 0,
@@ -60,8 +60,6 @@ User.create!( name: "A Travel Agent",
               usertype: 1,
               active: true,
               private: false)
-              
-
               
 User.create!( name: "SteveK",
               email: "a@b.com",
@@ -156,13 +154,15 @@ TravelPackage.create!(
   price: 500,
   location: "Penn Hills",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius lacus euismod erat consequat, id lacinia magna vehicula. ",
+  airport: "BWI",
   flight_num: "Lambda 300",
   flight_depart: "June 1 at 10:00am",
   flight_arrive: "June 1 at 5:00pm",
   user_id: 2,
   tags: "mountain biking bike outdoors exciting",
+  returnairport: "XYZ",
   return_num: "Lambda 210",
   return_depart: "June 7 at 4:00pm",
-  return_arrive: "June 7 at 11:11pm"
+  return_arrive: "June 7 at 11:11pm",
+  active: true
 )
-end

@@ -85,7 +85,7 @@
   <div class="container">
   <div class="row">
     <div class="col-md-12">
-    <% if current_user.usertype != 0  && @travel_package.active%>
+    <% if current_user.id == @travel_package.user_id &&current_user.usertype != 0  && @travel_package.active %>
       <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
       <%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
     <% else %>
