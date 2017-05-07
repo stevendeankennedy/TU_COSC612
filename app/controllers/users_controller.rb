@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   
   # Remove that friend
   def removefriend
-    @friend_item = Friend.find_friends(current_user.id, params[:friend]).first
+    @friend_item = Friend.find_two_friends(current_user.id, params[:friend]).first
     
     @friend_item.destroy
     flash[:success] = "Unfollowed this user."

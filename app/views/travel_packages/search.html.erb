@@ -1,13 +1,54 @@
-<br />
+<% provide(:title, 'Search') %>
 
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-    <p><%= image_tag("travel_airplane.jpg", class: "steve-responsive", alt: "Great Wall") %></p>
+	<aside id="fh5co-hero" style="background-image: url(<%= asset_path("images/fuji_00.jpg") %> );">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="fh5co-hero-wrap">
+						<div class="fh5co-hero-intro">
+								<h2>Explore. Dream. Discover.<span></span></h2>
+								<h1>Travel Packages</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	
+	
+<div id="fh5co-main">
+    
+    
+    
+    <section>
+    <div class="container">
+    	<div class="row">
 
-    <p>Please enter your search criteria.</p>
-    <%= form_tag(searchresults_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag("search", nil, class: "form_control input-lg", placeholder:"Enter search") %>
-        <%= submit_tag("Go", :name => nil, class: "btn btn-lg btn-primary", role: "button" ) %>
-    <% end %>
-</div>
+    		<div class="col-md-8 col-md-offset-2 text-center fh5co-lead-wrap">
+    			<h2 class="fh5co-uppercase-heading-sm text-center">Please enter your search criteria</h2>
+
+    		    <div class="col-md-8 col-md-offset-2">
+    			    <%= form_tag(searchresults_path, :method => "get", id: "search-form") do %>
+    					<div class="col-md-12">
+    					<div class="form-group">
+                        <%= text_field_tag("search", nil, class: "form_control input-lg", placeholder:"Enter search") %>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+    					<div class="form-group">
+                        <%= submit_tag("Go", :name => nil, class: "btn btn-lg btn-primary", role: "button" ) %>
+                        </div>
+                        </div>
+                    <% end %>
+				</div>
+						
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+				</div>
+    		
+    		</div>
+    
+    	</div>
+    	
+    	<div class="fh5co-spacer fh5co-spacer-xxs"></div>
+    </section>
 </div>

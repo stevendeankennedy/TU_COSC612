@@ -1,52 +1,79 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-    <!--<aside class="col-md-4">-->
-        <!--<section class="user_info">-->
-            <h1>
-                <%= gravatar_for @user %>
-                <%= @user.name %>, <%= @user.email %>
-            </h1>
-        <!--</section>-->
-    <!--</aside>-->
+	<aside id="fh5co-hero" style="background-image: url(<%= asset_path("images/fuji_00.jpg") %> );">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="fh5co-hero-wrap">
+						<div class="fh5co-hero-intro">
+								<h2>User Profile<span></span></h2>
+								<h1><%= @user.name %></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	
+<div id="fh5co-main">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-lead-wrap">
+					<h2 class="fh5co-serif fh5co-lead">
+					    <%= gravatar_for @user, {size: 200} %><%= @user.name %>, <%= @user.email %>
+          </h2>
+
+					<% if current_user != @user %>
+					<div class="row">
+					    <%= link_to "Send Message", new_message_path(:recipient => @user.email), class:"btn btn-outline btn-lg"%>
+					    
+					    <% if @is_friend %>
+					      <%= link_to 'Unfollow', unfollow_path(:friend => @user.id), class:"btn btn-outline btn-lg" %>
+					    <% else %>
+					      <%= link_to 'Follow', follow_path(:friend => @user.id), class:"btn btn-outline btn-lg" %>
+					    <% end %>
+					
+					  <% if @user.usertype == 1 %>
+					    <%= link_to "See all my packages", agentpackages_path(:agent => @user.id), class:"btn btn-outline btn-lg" %>
+					  <% end %>
+					</div>
+					<% end %>          
+          
+				</div>
+				
+				<%= render 'shared/flash_messages' if !flash.empty? %>
+				
+			</div>
+		</div>
+		
+		<% if @purchases.count > 0 %>
+		<div class="container">
+			<div class="row">
+
+			    <h2>Travel History</h2>
+
+			    <div class="table-responsive">
+			    <table class="table table-condensed table-hover ">
+			    <thead>
+			      <tr>
+			        <th>Name</th>
+			        <th>Destination</th>
+			      </tr>
+			    </thead>
+			    
+			    <tbody>
+			      <% @purchases.each do |p| %>
+			        <tr>
+			          <td><%= link_to p.name, travel_package_url(p.package_id) %></td>
+			          <td><%= p.location %></td>
+			        </tr>
+			      <% end %>
+			    </tbody>
+			    </table>
+			    </div>
+			    
+			</div>
+		</div>
+		<% end %>
+		
 </div>
-<br>
-
-<% if current_user != @user %>
-<div class="row center">
-    <%= link_to "Send Message", new_message_path(:recipient => @user.email), class:"btn btn-lg", role:"button" %>
-    
-    <% if @is_friend %>
-      <%= link_to 'Unfollow', unfollow_path(:friend => @user.id), class:"btn btn-lg" %>
-    <% else %>
-      <%= link_to 'Follow', follow_path(:friend => @user.id), class:"btn btn-lg" %>
-    <% end %>
-
-  <% if @user.usertype == 1 %>
-    <%= link_to "See all my packages", agentpackages_path(:agent => @user.id), class:"btn btn-lg" %>
-  <% end %>
-</div>
-<% end %>
-
-<% if @purchases.count > 0 %>
-    <h1>Travel History</h1>
-    
-    <div class="table-responsive">
-    <table class="table table-condensed table-hover ">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Destination</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <% @purchases.each do |p| %>
-        <tr>
-          <td><%= link_to p.name, travel_package_url(p.package_id) %></td>
-          <td><%= p.location %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    </table>
-    </div>
-<% end %>

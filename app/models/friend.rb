@@ -4,4 +4,8 @@ class Friend < ApplicationRecord
     where("user = ?", user)
   end
   
+  def Friend.find_two_friends(user1, user2)
+    where("user = ? and friend = ?", user1, user2)
+  end
+  
 end

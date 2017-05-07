@@ -1,87 +1,109 @@
-<br>
-
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-  
-<p><%= image_tag("travel_airplane.jpg", class: "steve-responsive", alt: "Great Wall") %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @travel_package.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  $<%= @travel_package.price %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @travel_package.location %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @travel_package.description %>
-</p>
-
-<p>
-  <strong>Airport:</strong>
-  <%= @travel_package.airport %>
-</p>
-
-<p>
-  <strong>Flight num:</strong>
-  <%= @travel_package.flight_num %>
-</p>
-
-<p>
-  <strong>Flight depart:</strong>
-  <%= @travel_package.flight_depart %>
-</p>
-
-<p>
-  <strong>Flight arrive:</strong>
-  <%= @travel_package.flight_arrive %>
-</p>
-
-<p>
-  <strong>Returning Airport:</strong>
-  <%= @travel_package.returnairport %>
-</p>
-
-<p>
-  <strong>Return Flight:</strong> <%= @travel_package.return_num %>
-</p>
-<p>
-  <strong>Return Departure:</strong> <%= @travel_package.return_depart %>
-</p>
-<p>
-  <strong>Return Arrival:</strong> <%= @travel_package.return_arrive %>
-</p>
-
-<p>
-  <strong>Offered by:</strong>
-  <%= @agent.name %>
-</p>
-
-<% if current_user.usertype != 0  && @travel_package.active%>
-  <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
-  <%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
-<% else %>
-  <div class="col-lg-6">
-  <%= link_to "Contact this Travel Agent", user_path(@travel_package.user_id), class:"btn btn-lg btn-primary", role:"button" %>
+<% provide(:title, 'Package Detail') %>
+	<aside id="fh5co-hero" style="background-image: url(<%= asset_path("images/sanfran.jpg") %> );">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="fh5co-hero-wrap">
+						<div class="fh5co-hero-intro">
+								<h2>Package Detail<span></span></h2>
+								<h1><%= @travel_package.name %></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	
+<div id="fh5co-main">	
+  <section>
+  <div class="container">
+  <div class="row">
+      <div class="col-md-12">
+  			<h2 class="fh5co-uppercase-heading-sm text-center">Offered by <%= @agent.name %></h2>
+  			
+  			<div id="fh5co-tab-feature-center" class="fh5co-tab text-center">
+  				<ul class="resp-tabs-list hor_1">
+  					<li><i class="fh5co-tab-menu-icon ti-world"></i>Trip Detail</li>
+  					<li><i class="fh5co-tab-menu-icon ti-arrow-top-right"></i> Flight</li>
+  					<li><i class="fh5co-tab-menu-icon ti-back-left"></i> Return</li>
+  				</ul>
+  				<div class="resp-tabs-container hor_1">
+  					<div>
+  						<div class="row">
+  							<div class="col-md-12">
+  								<h2 class="h3">Package: <%= @travel_package.name %></h2>
+  							</div>
+  							<div class="col-md-6">
+  								<p>Price: $<%= @travel_package.price %></p>
+  								<p>Location: <%= @travel_package.location %></p>
+  							</div>
+  							<div class="col-md-6">
+  								<p><%= @travel_package.description %></p>
+  							</div>
+  						</div>
+  					</div>
+  					
+  					<div>
+  						<div class="row">
+  							<div class="col-md-12">
+  								<h2 class="h3">Flight Information</h2>
+  							</div>
+  							<div class="col-md-6">
+  								<p>Airport: <%= @travel_package.airport %></p>
+  								<p>Flight: <%= @travel_package.flight_num %></p>
+  							</div>
+  							<div class="col-md-6">
+  								<p>Departure: <%= @travel_package.flight_depart %></p>
+  								<p>Arrival: <%= @travel_package.flight_arrive %></p>
+  							</div>
+  						</div>
+  					</div>
+  					
+  					<div>
+  						<div class="row">
+  							<div class="col-md-12">
+  								<h2 class="h3">Returning Flight</h2>
+  							</div>
+  							<div class="col-md-6">
+  								<p>Airport: <%= @travel_package.returnairport %></p>
+  								<p>Flight: <%= @travel_package.return_num %></p>
+  							</div>
+  							<div class="col-md-6">
+  								<p>Departure: <%= @travel_package.return_depart %></p>
+  								<p>Arrival: <%= @travel_package.return_arrive %></p>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
   </div>
-  <% if @travel_package.active %>
-    <div class="col-lg-6">
-    <%= link_to "Buy this package", confirmation_url(:do => :confirm, :pack => @travel_package), class:"btn btn-lg btn-primary", role:"button" %>
-    </div>
-  <% else %>
-    <div class="col-lg-6">
-      This package is not for sale.
-    </div>
-  <% end %>
-<% end %>
+  </div>
+  </section>
 
-</div>
+  <section>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <% if current_user.usertype != 0  && @travel_package.active%>
+      <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-lg btn-primary", role: "button" %>
+      <%= link_to 'Back', travel_packages_path, class: "btn btn-lg btn-primary", role: "button" %>
+    <% else %>
+      <div class="col-lg-6">
+      <%= link_to "Contact this Travel Agent", user_path(@travel_package.user_id), class:"btn btn-lg btn-primary", role:"button" %>
+      </div>
+      <% if @travel_package.active %>
+        <div class="col-lg-6">
+        <%= link_to "Buy this package", confirmation_url(:do => :confirm, :pack => @travel_package), class:"btn btn-lg btn-primary", role:"button" %>
+        </div>
+      <% else %>
+        <div class="col-lg-6">
+          This package is not for sale.
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+  </div>
+  </section>
 </div>

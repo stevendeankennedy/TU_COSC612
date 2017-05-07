@@ -1,10 +1,33 @@
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-  <h1>Congratulations on your purchase!</h1>
-  <p>We hope that you enjoy <%= @destination %>!</p>
+<% provide(:title) %>
+
+	<aside id="fh5co-hero" style="background-image: url(<%= asset_path("images/lanterns.jpg") %> );">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="fh5co-hero-wrap">
+						<div class="fh5co-hero-intro">
+								
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	
+	
+<div id="fh5co-main">
+  <div class="container">
   
-  <p>Your agent will send contact you with further package details.</p>
-  <h2>Your confirmation number is WL2T00<%= @confirmation %></h2>
-  <p>This site does not process payments, but it would have been handled here.</p>
-</div>
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <h1>Congratulations on your purchase!</h1>
+    <p>We hope that you enjoy <%= @destination %>!</p>
+    
+    <p>Your agent will send contact you with further package details.</p>
+    <h2>Your confirmation number is WL2T00<%= @confirmation %></h2>
+    <p>This site does not process payments, but it would have been handled here.</p>
+    </div>
+    </div>
+  
+  </div>
 </div>

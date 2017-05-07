@@ -1,12 +1,35 @@
-<h1>New Message</h1>
+<% provide(:title) %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= link_to 'Back', messages_path %>
-  </div>
+	<aside id="fh5co-hero" style="background-image: url(<%= asset_path("images/holi.jpg") %> );">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="fh5co-hero-wrap">
+						<div class="fh5co-hero-intro">
+								<h2><span></span></h2>
+								<h1>New Message</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+<div id="fh5co-main">
+
+		<div class="container">
+      <h1>New Message</h1>
+      
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= link_to 'Back', messages_path %>
+        </div>
+      </div>
+      
+      
+			<div class="row">
+        <%= render 'form', message: @message %>
+      </div>
+    </div>
 </div>
-
-<br>
-
-<%= render 'form', message: @message %>
 
